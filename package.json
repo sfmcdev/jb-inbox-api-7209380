@@ -5,9 +5,9 @@
   "scripts": {
     "start": "node app.js"
   },
-  "author": "SalesForce Marketing Cloud, Dev Advocate Team",
+  "author": "SalesForce Marketing Cloud, APAC - Vic Cheng",
   "contributors": [
-    "Drew Simmons <drew.simmons@salesforce.com>"
+    "Victor Cheng <vcheng@salesforce.com>"
   ],  
   "dependencies": {
     "express": "~3.5.0",
