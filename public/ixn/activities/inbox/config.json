@@ -30,7 +30,7 @@
         }
     },
     "configurationArguments": {
-    	"applicationExtensionKey": "__activity-key__",
+    	"applicationExtensionKey": "jb-inbox-api-7209380",
         "defaults": { "priority": "4"},             
         "save": {
         	"url": "https://jb-inbox-api-7209380.herokuapp.com/ixn/activities/inbox/save/",
