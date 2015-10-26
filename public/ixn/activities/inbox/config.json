@@ -1,0 +1,59 @@
+{
+    "workflowApiVersion": "1.0",
+    "metaData": {
+        "version": "2.0",
+        "icon": "images/jb-icon.jpg",
+        "iconSmall": "images/jb-icon.jpg"
+    },
+    "type": "REST",
+    "lang": {
+        "en-US": {
+            "name": "INBOX message",
+            "description": "Send an INBOX message via API"
+        }
+    },
+    "arguments": {
+        "execute": {       
+			"inArguments":[				
+				{ "emailAddress": "{{Contact.Default.Email}}"}							
+			],
+            "outArguments": [
+            	{ "status":"number" }
+			],			
+			"url": "https://jb-inbox-api-7209380.herokuapp.com/ixn/activities/inbox/execute/",
+            "verb": "POST",
+            "body": "",
+            "header": "",
+            "format": "json",
+            "useJwt": false,
+            "timeout": 10000
+        }
+    },
+    "configurationArguments": {
+    	"applicationExtensionKey": "__activity-key__",
+        "defaults": { "priority": "4"},             
+        "save": {
+        	"url": "https://jb-inbox-api-7209380.herokuapp.com/ixn/activities/inbox/save/",
+            "body": "",
+            "verb": "POST",
+            "useJwt": false
+        },
+        "publish": {
+        	"url": "https://jb-inbox-api-7209380.herokuapp.com/ixn/activities/inbox/publish/",
+            "verb": "POST",
+            "body": "",
+            "useJwt": false
+        },
+        "validate": {
+        	"url": "https://jb-inbox-api-7209380.herokuapp.com/ixn/activities/inbox/validate/",
+            "verb": "POST",
+            "body": "",
+            "useJwt": false            
+        }
+    },
+    "edit": {
+    	"url": "https://jb-inbox-api-7209380.herokuapp.com/ixn/activities/inbox/",
+        "height": 400,
+        "width": 500
+    }
+}
