@@ -1,6 +1,6 @@
 {
-  "name": "deskActivities",
-  "version": "0.7.0",
+  "name": "pzh-inbox-7209380",
+  "version": "0.8.0",
   "private": true,
   "scripts": {
     "start": "node app.js"
