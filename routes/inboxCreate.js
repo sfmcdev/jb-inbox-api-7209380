@@ -59,7 +59,7 @@ var TEST_MESSAGE = {
 	"titleEn": "EN Test Title",
 	"contentEN": "EN Test Content",
 	"titleTc": "TC  Test Title",
-	"contentTC": "TC Test Content",
+	"contentTc": "TC Test Content",
 	"messageType" : "MEMBER"
 };
 
