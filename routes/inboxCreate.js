@@ -62,6 +62,11 @@ function initInboxMsg(req, res)
 	var aArgs = req.body.inArguments;
 	console.log( aArgs );
 	var oArgs = {};
+	var iLen = aArgs.length;
+	if(!iLen)
+	{
+		iLen = 0;
+	}
 	for (var i=0; i<aArgs.length; i++) {  
 		for (var key in aArgs[i]) { 
 			oArgs[key] = aArgs[i][key]; 
