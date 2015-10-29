@@ -110,7 +110,7 @@ define( function( require ) {
 
 	function getApiUrl()
 	{
-		return $('input:radio[name=apiUrl]').filter(":checked").val();
+		return $('#selectURLType').find('option:selected').attr('value').trim();
 	};
 	
     function getTitleEn()

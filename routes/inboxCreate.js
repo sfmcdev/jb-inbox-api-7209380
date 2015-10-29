@@ -71,44 +71,46 @@ function initInboxMsg(req, res)
 	var contactKey = req.body.keyValue;
 
 	// these values come from the config.json
-	var email = oArgs.emailAddress;
-	var fname = oArgs.firstName;
-	var lname = oArgs.lastName;
-
+	
 	// these values come from the custom activity form inputs
 	var titleEn = oArgs.titleEn;
 	var contentEn = oArgs.contentEn;
 	var titleTc = oArgs.titleTc;
 	var contentTc = oArgs.contentTc;
 	var messageType = oArgs.messageType;
-	//var valueTier = oArgs.valueTier;
-	//var bonusType = oArgs.type;
-	//var bonusId = oArgs.bonus;
-
+	var apiUrl = oArgs.apiUrl;
+	
+	var apiHost = "http://uat.gtomato.com/";
+	var apiPath = "pizzahut/internalApi/createMessage.do";
+	// TODO - add PROD url
+	if(apiURL == "PROD")
+	{
+		
+	}
+	
 	// any logic for bonus allocation can go here...
 	// This is a placeholder that shows an example https call
 	// to a given endpoint.  Again, you can do anything you like here.
 
 	console.log('INBOX message for ', contactKey);
 	var post_data = JSON.stringify({  
-		"contactKey":contactKey,
-		//"valueTier": valueTier,
-		//"bonusType":bonusType,
-		//"bonusId":bonusId
+		"userId":contactKey,
 		"titleEn": titleEn,
 		"contentEn": contentEn,
 		"titleTc": titleTc,
 		"contentTc": contentTc,
-		"messageType":messageType
+		"type":messageType,
+		"relatedId": "150",
+		"isPush": false
 	});			
 
 	var options = {
-		'hostname': activityUtils.endpOintcreds.host,
-		'path': '/api/v2/offers',
+		'hostname': apiHost,
+		'path': apiPath,
 		'method': 'POST',
 		'headers': {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json',
+			//'Accept': 'application/json',
+			'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
 			'Content-Length': post_data.length
 		},
 	};				
