@@ -1,12 +1,21 @@
 body {
-    margin: 0px;
+    margin: 20px;
     padding: 0px;
 	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
 	font-size:11px;
 }
 
+form {
+	width:200px;
+}
+
 input{
 	width:200px;
+}
+
+input.radio
+{
+	width:20px;
 }
 
 input.contents{
