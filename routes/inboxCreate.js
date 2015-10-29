@@ -160,7 +160,8 @@ function initInboxMsg(req, res)
 				{ 
 					//'postman-token': 'c586bd36-478b-f3c8-839e-04f5437ce8a5',
 					//'cache-control': 'no-cache',
-					'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8' 
+					'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8' ,
+					'Content-Length': form_data.length
 				},
 		form: form_data				
 	 };
