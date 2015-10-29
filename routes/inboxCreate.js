@@ -128,6 +128,7 @@ function initInboxMsg(req, res)
 		"isPush": false
 	});			
 
+	/*
 	var options = {
 		'hostname': apiHost,
 		'path': apiPath,
@@ -137,7 +138,20 @@ function initInboxMsg(req, res)
 			'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
 			'Content-Length': post_data.length
 		},
-	};				
+	};
+	*/	
+	
+	var options = { 
+		method: 'POST',
+		url: 'http://uat.gtomato.com/pizzahut/internalApi/createMessage.do',
+		headers: 
+				{ 
+					//'postman-token': 'c586bd36-478b-f3c8-839e-04f5437ce8a5',
+					'cache-control': 'no-cache',
+					'content-type': 'application/x-www-form-urlencoded; charset=utf-8' 
+				},
+		form: oArgs				
+	 };
 	
 	console.log('options:', options);
 
