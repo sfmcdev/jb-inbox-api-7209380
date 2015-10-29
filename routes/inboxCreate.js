@@ -114,9 +114,19 @@ function initInboxMsg(req, res)
 	// any logic for bonus allocation can go here...
 	// This is a placeholder that shows an example https call
 	// to a given endpoint.  Again, you can do anything you like here.
-
 	
 	console.log('INBOX message for ', contactKey);
+	var form_data = {  
+		"userId":contactKey,
+		"titleEn": titleEn,
+		"contentEn": contentEn,
+		"titleTc": titleTc,
+		"contentTc": contentTc,
+		"type":messageType,
+		"relatedId": "150",
+		"isPush": false
+	};
+	
 	var post_data = JSON.stringify({  
 		"userId":contactKey,
 		"titleEn": titleEn,
@@ -127,6 +137,8 @@ function initInboxMsg(req, res)
 		"relatedId": "150",
 		"isPush": false
 	});			
+	
+	
 
 	/*
 	var options = {
@@ -147,10 +159,10 @@ function initInboxMsg(req, res)
 		headers: 
 				{ 
 					//'postman-token': 'c586bd36-478b-f3c8-839e-04f5437ce8a5',
-					'cache-control': 'no-cache',
-					'content-type': 'application/x-www-form-urlencoded; charset=utf-8' 
+					//'cache-control': 'no-cache',
+					'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8' 
 				},
-		form: oArgs				
+		form: form_data				
 	 };
 	
 	console.log('options:', options);
