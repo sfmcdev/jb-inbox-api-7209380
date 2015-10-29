@@ -103,7 +103,7 @@ function initInboxMsg(req, res)
 	var messageType = oArgs.messageType;
 	var apiUrl = oArgs.apiUrl;
 	
-	var apiHost = "http://uat.gtomato.com/";
+	var apiHost = "uat.gtomato.com/";
 	var apiPath = "pizzahut/internalApi/createMessage.do";
 	// TODO - add PROD url
 	if(apiUrl == "PROD")
