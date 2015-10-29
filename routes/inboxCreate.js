@@ -139,7 +139,7 @@ function initInboxMsg(req, res)
 		},
 	};				
 	
-	console.log(options);
+	console.log('options:', options);
 
 	var httpsCall = https.request(options, function(response) {
 		var data = '';
