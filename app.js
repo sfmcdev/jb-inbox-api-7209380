@@ -8,8 +8,8 @@ var path        = require('path');
 var request     = require('request');
 var routes      = require('./routes');
 var inboxCreate   = require('./routes/inboxCreate');
-var activityCreate   = require('./routes/activityCreate');
-var activityUpdate   = require('./routes/activityUpdate');
+//var activityCreate   = require('./routes/activityCreate');
+//var activityUpdate   = require('./routes/activityUpdate');
 var activityUtils    = require('./routes/activityUtils');
 var pkgjson = require( './package.json' );
 
@@ -79,6 +79,7 @@ app.post('/ixn/activities/inbox/validate/', inboxCreate.validate );
 app.post('/ixn/activities/inbox/publish/', inboxCreate.publish );
 app.post('/ixn/activities/inbox/execute/', inboxCreate.execute );
 
+/*
 // Custom Activity Routes for interacting with Desk.com API
 app.post('/ixn/activities/create-case/save/', activityCreate.save );
 app.post('/ixn/activities/create-case/validate/', activityCreate.validate );
@@ -89,6 +90,7 @@ app.post('/ixn/activities/update-case/save/', activityUpdate.save );
 app.post('/ixn/activities/update-case/validate/', activityUpdate.validate );
 app.post('/ixn/activities/update-case/publish/', activityUpdate.publish );
 app.post('/ixn/activities/update-case/execute/', activityUpdate.execute );
+*/
 
 app.get('/clearList', function( req, res ) {
 	// The client makes this request to get the data

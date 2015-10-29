@@ -2,8 +2,8 @@
 
 // Deps
 var activityUtils = require('./activityUtils');
-var activityCreate = require('./activityCreate');
-var activityUpdate = require('./activityUpdate');
+//var activityCreate = require('./activityCreate');
+//var activityUpdate = require('./activityUpdate');
 var inboxCreate = require('./inboxCreate');
 
 /*
@@ -17,7 +17,7 @@ exports.index = function(req, res){
         });
     } else {
         res.render( 'index', {
-            title: 'Journey Builder Activity Example: Desk.com API',
+            title: 'Journey Builder Activity:InApp INBOX message',
             results: activityUtils.logExecuteData,
         });
     }
