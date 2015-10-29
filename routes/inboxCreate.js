@@ -55,6 +55,15 @@ exports.execute = function( req, res ) {
 	initInboxMsg(req,res);
 };
 
+var TEST_MESSAGE = {
+	"titleEn": "EN Test Title",
+	"contentEN": "EN Test Content",
+	"titleTc": "TC  Test Title",
+	"contentTC": "TC Test Content",
+	"messageType" : "MEMBER"
+};
+
+var TEST_CK = "927746965857";
 
 function initInboxMsg(req, res)
 {
@@ -72,10 +81,19 @@ function initInboxMsg(req, res)
 			oArgs[key] = aArgs[i][key]; 
 		}
 	}
-		
+	
+	
 	var contactKey = req.body.keyValue;
 
 	// these values come from the config.json
+	
+	
+	// TODO - remove test data
+	if(!contactKey)
+	{
+		oArgs = TEST_MESSAGE;
+		contactKey = TEST_CK;
+	}
 	
 	// these values come from the custom activity form inputs
 	var titleEn = oArgs.titleEn;
@@ -97,6 +115,7 @@ function initInboxMsg(req, res)
 	// This is a placeholder that shows an example https call
 	// to a given endpoint.  Again, you can do anything you like here.
 
+	
 	console.log('INBOX message for ', contactKey);
 	var post_data = JSON.stringify({  
 		"userId":contactKey,
