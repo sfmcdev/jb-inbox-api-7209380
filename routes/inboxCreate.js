@@ -154,11 +154,8 @@ function initInboxMsg(req, res)
 		method: 'POST',
 		url: 'http://uat.gtomato.com/pizzahut/internalApi/createMessage.do',
 		headers: 
-				{ 
-					//'postman-token': 'c586bd36-478b-f3c8-839e-04f5437ce8a5',
-					//'cache-control': 'no-cache',
-					'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8' ,
-					'Content-Length': form_data.length
+				{
+					'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
 				},
 		form: form_data				
 	 };
@@ -414,7 +411,7 @@ function createCase(custId, email, priority, next) {
 		next(500, 'createCase', {}, { error: e });
 	});				
 	
-	httpsCall.write(post_data);
+	//httpsCall.write(post_data);
 	httpsCall.end();
 
 };
