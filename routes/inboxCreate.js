@@ -1,5 +1,6 @@
 'use strict';
 var https = require( 'https' );
+var http = require( 'http' );
 var activityUtils = require('./activityUtils');
 
 
@@ -55,16 +56,6 @@ exports.execute = function( req, res ) {
 	initInboxMsg(req,res);
 };
 
-var TEST_MESSAGE = {
-	"titleEn": "EN Test Title",
-	"contentEN": "EN Test Content",
-	"titleTc": "TC  Test Title",
-	"contentTc": "TC Test Content",
-	"messageType" : "MEMBER"
-};
-
-var TEST_CK = "927746965857";
-
 function initInboxMsg(req, res)
 {
 	//merge the array of objects for easy access in code.
@@ -91,8 +82,14 @@ function initInboxMsg(req, res)
 	// TODO - remove test data
 	if(!contactKey)
 	{
-		oArgs = TEST_MESSAGE;
-		contactKey = TEST_CK;
+		oArgs = {
+			"titleEn": "EN Test Title",
+			"contentEN": "EN Test Content",
+			"titleTc": "TC  Test Title",
+			"contentTc": "TC Test Content",
+			"messageType" : "MEMBER"
+		};
+		contactKey = "927746965857";
 	}
 	
 	// these values come from the custom activity form inputs
@@ -168,7 +165,7 @@ function initInboxMsg(req, res)
 	
 	console.log('options:', options);
 
-	var httpsCall = https.request(options, function(response) {
+	var httpsCall = http.request(options, function(response) {
 		var data = '';
 		var error = '';
 			
