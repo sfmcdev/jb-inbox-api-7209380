@@ -87,7 +87,8 @@ function initInboxMsg(req, res)
 			"contentEn": "EN Test Content",
 			"titleTc": "TC  Test Title",
 			"contentTc": "TC Test Content",
-			"messageType" : "MEMBER"
+			"messageType" : "MEMBER",
+			"relatiedId" : "150"
 		};
 		contactKey = "927746965857";
 	}
@@ -97,11 +98,11 @@ function initInboxMsg(req, res)
 	var contentEn = oArgs.contentEn;
 	var titleTc = oArgs.titleTc;
 	var contentTc = oArgs.contentTc;
+	var relatedId = oArgs.relatedId;
 	var messageType = oArgs.messageType;
 	var apiUrl = oArgs.apiUrl;
 	
-	var apiHost = "uat.gtomato.com";
-	var apiPath = "/pizzahut/internalApi/createMessage.do";
+	var post_url = 'http://uat.gtomato.com/pizzahut/internalApi/createMessage.do'
 	// TODO - add PROD url
 	if(apiUrl == "PROD")
 	{
@@ -120,45 +121,11 @@ function initInboxMsg(req, res)
 		"titleTc": titleTc,
 		"contentTc": contentTc,
 		"type":messageType,
-		"relatedId": "150",
+		"relatedId": relatedId,
 		"isPush": false
 	};
-	
-	var post_data = JSON.stringify({  
-		"userId":contactKey,
-		"titleEn": titleEn,
-		"contentEn": contentEn,
-		"titleTc": titleTc,
-		"contentTc": contentTc,
-		"type":messageType,
-		"relatedId": "150",
-		"isPush": false
-	});			
-	
-
-	/*
-	var options = {
-		'hostname': apiHost,
-		'path': apiPath,
-		'method': 'POST',
-		'headers': {
-			//'Accept': 'application/json',
-			'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-			'Content-Length': post_data.length
-		},
-	};
-	*/	
-	
-	var options = { 
-		method: 'POST',
-		url: 'http://uat.gtomato.com/pizzahut/internalApi/createMessage.do',
-		headers: 
-				{
-					'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
-				}
-	 };
-	
-	console.log('options:', options);
+		
+	console.log('form data:', form_data);
 
 	var request = require('request');
 
@@ -169,10 +136,13 @@ function initInboxMsg(req, res)
 		},
 		function (error, response, body) 
 		{
-			if (!error && response.statusCode == 200) 
-			{
-				console.log(body)
-			}
+			if (!error && response.statusCode == 200) {				
+				console.log('onEND inbox Create:', response.statusCode, data);
+				res.send( 200, {"status": 0} );
+			} else {
+				console.log('onEND fail:', response.statusCode);
+				res.send(response.statusCode);
+			}		
 		}
 	);
 	

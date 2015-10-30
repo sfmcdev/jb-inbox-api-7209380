@@ -15,6 +15,7 @@ define( function( require ) {
 
     connection.on('initActivity', function(payload) {
         var apiUrl;
+		var relatedId;
 		var titleEn;
 		var contentEn;
 		var titleTc;
@@ -35,6 +36,7 @@ define( function( require ) {
 			}
 			//oArgs.priority will contain a value if this activity has already been configured:
 			apiUrl = oArgs.apiUrl || toJbPayload['configurationArguments'].defaults.apiUrl;
+			relatedId = oArgs.relatedId || toJbPayload['configurationArguments'].defaults.relatedId;
 			titleEn = oArgs.titleEn || toJbPayload['configurationArguments'].defaults.titleEn;
 			contentEn = oArgs.contentEn || toJbPayload['configurationArguments'].defaults.contentEn;
 			titleTc = oArgs.titleTc || toJbPayload['configurationArguments'].defaults.titleTc;
@@ -47,6 +49,7 @@ define( function( require ) {
 		});                
 
 		$('#titleEn').val(titleEn);
+		$('#relatedId').val(relatedId);
 		$('#titleTc').val(titleTc);
 		$('#contentEn').val(contentEn);
 		$('#contentTc').val(contentTc);
@@ -113,6 +116,14 @@ define( function( require ) {
 		return $('#selectURLType').find('option:selected').attr('value').trim();
 	};
 	
+	function getRelatedId()
+	{
+		var str = $('#relatedId').val();
+		if(str)
+			return str.trim();
+		return "";
+	}
+	
     function getTitleEn()
 	{
 		var str = $('#titleEn').val();
@@ -151,6 +162,7 @@ define( function( require ) {
 
     function save() {
 		var apiUrl = getApiUrl();
+		var relatedId = getRelatedId();
         var titleEn = getTitleEn();
 		var contentEn = getContentEn();
 		var titleTc = getTitleTc();
@@ -158,6 +170,7 @@ define( function( require ) {
 		var messageType = getMessageType();
 		
         toJbPayload['arguments'].execute.inArguments.push({"apiUrl": apiUrl});
+        toJbPayload['arguments'].execute.inArguments.push({"relatedId": relatedId});
         toJbPayload['arguments'].execute.inArguments.push({"titleEn": titleEn});
 		toJbPayload['arguments'].execute.inArguments.push({"contentEn": contentEn});
 		toJbPayload['arguments'].execute.inArguments.push({"titleTc": titleTc});
@@ -165,6 +178,7 @@ define( function( require ) {
 		toJbPayload['arguments'].execute.inArguments.push({"messageType": messageType});
 		
 		toJbPayload['configurationArguments'].apiUrl = apiUrl;
+		toJbPayload['configurationArguments'].relatedId = relatedId;
 		toJbPayload['configurationArguments'].titleEn = titleEn;
 		toJbPayload['configurationArguments'].titleTc = titleTc;
 		toJbPayload['configurationArguments'].contentEn = contentEn;
