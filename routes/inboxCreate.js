@@ -160,6 +160,23 @@ function initInboxMsg(req, res)
 	
 	console.log('options:', options);
 
+	var request = require('request');
+
+	request.post(
+		'http://uat.gtomato.com/pizzahut/internalApi/createMessage.do',
+		{ 
+			form: form_data
+		},
+		function (error, response, body) 
+		{
+			if (!error && response.statusCode == 200) 
+			{
+				console.log(body)
+			}
+		}
+	);
+	
+	/*
 	var httpsCall = http.request(options, function(response) {
 		var data = '';
 		var error = '';
@@ -189,5 +206,6 @@ function initInboxMsg(req, res)
 	
 	httpsCall.write(form_data);
 	httpsCall.end();
+	*/
 }
 
