@@ -128,16 +128,15 @@ function initInboxMsg(req, res)
 	console.log('form data:', form_data);
 
 	var request = require('request');
-
 	request.post(
-		'http://uat.gtomato.com/pizzahut/internalApi/createMessage.do',
+		post_url, 
 		{ 
 			form: form_data
 		},
 		function (error, response, body) 
 		{
 			if (!error && response.statusCode == 200) {				
-				console.log('onEND inbox Create:', response.statusCode, data);
+				console.log('onEND inbox Create:', response.statusCode);
 				res.send( 200, {"status": 0} );
 			} else {
 				console.log('onEND fail:', response.statusCode);
