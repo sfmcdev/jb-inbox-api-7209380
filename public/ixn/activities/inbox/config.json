@@ -53,7 +53,7 @@
     },
     "edit": {
     	"url": "https://jb-inbox-api-7209380.herokuapp.com/ixn/activities/inbox/",
-        "height": 400,
+        "height": 500,
         "width": 500
     }
 }
