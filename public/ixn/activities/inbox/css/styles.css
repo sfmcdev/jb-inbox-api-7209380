@@ -13,9 +13,19 @@ input{
 	width:200px;
 }
 
-input.radio
+input[type='radio']
 {
 	width:20px;
+}
+
+input[type='checkbox']
+{
+	width: 20px;
+	border:solid 1px red;
+}
+
+label
+{
 }
 
 input.contents{

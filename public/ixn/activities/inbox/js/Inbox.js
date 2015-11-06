@@ -21,6 +21,7 @@ define( function( require ) {
 		var titleTc;
 		var contentTc;
 		var messageType;
+		var isPush;
 
         if (payload) {
             toJbPayload = payload;
@@ -42,6 +43,7 @@ define( function( require ) {
 			titleTc = oArgs.titleTc || toJbPayload['configurationArguments'].defaults.titleTc;
 			contentTc = oArgs.contentTc || toJbPayload['configurationArguments'].defaults.contentTc;
 			messageType = oArgs.messageType || toJbPayload['configurationArguments'].defaults.messageType;
+			isPush = oArgs.isPush || toJbPayload['configurationArguments'].defaults.isPush;
         }
         
 		$.get( "/version", function( data ) {
@@ -55,6 +57,7 @@ define( function( require ) {
 		$('#contentTc').val(contentTc);
 		$('#selectMessageType').find('option[value='+ messageType +']').attr('selected', 'selected');		
 		$('#selectURLType').find('option[value='+ apiUrl +']').attr('selected', 'selected');		
+		$('#isPush').attr('checked', isPush);
 		
 		connection.trigger('updateButton', { button: 'next', enabled: false });
 		gotoStep(step);
@@ -159,6 +162,11 @@ define( function( require ) {
     function getMessageType() {
         return $('#selectMessageType').find('option:selected').attr('value').trim();
     };
+	
+	function getIsPush()
+	{
+		return $('#isPush').is(":checked");
+	}
 
     function save() {
 		var apiUrl = getApiUrl();
@@ -168,6 +176,7 @@ define( function( require ) {
 		var titleTc = getTitleTc();
 		var contentTc = getContentTc();
 		var messageType = getMessageType();
+		var isPush = getIsPush();
 		
         toJbPayload['arguments'].execute.inArguments.push({"apiUrl": apiUrl});
         toJbPayload['arguments'].execute.inArguments.push({"relatedId": relatedId});
@@ -176,6 +185,7 @@ define( function( require ) {
 		toJbPayload['arguments'].execute.inArguments.push({"titleTc": titleTc});
 		toJbPayload['arguments'].execute.inArguments.push({"contentTc": contentTc});
 		toJbPayload['arguments'].execute.inArguments.push({"messageType": messageType});
+		toJbPayload['isPush'].execute.inArguments.push({"isPush": messageType});
 		
 		toJbPayload['configurationArguments'].apiUrl = apiUrl;
 		toJbPayload['configurationArguments'].relatedId = relatedId;
@@ -184,6 +194,7 @@ define( function( require ) {
 		toJbPayload['configurationArguments'].contentEn = contentEn;
 		toJbPayload['configurationArguments'].contentTc = contentTc;
 		toJbPayload['configurationArguments'].messageType = messageType;
+		toJbPayload['configurationArguments'].isPush = isPush;
 		
 		toJbPayload.metaData.isConfigured = true;  //this is required by JB to set the activity as Configured.
         connection.trigger('updateActivity', toJbPayload);

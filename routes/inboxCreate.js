@@ -101,6 +101,7 @@ function initInboxMsg(req, res)
 	var relatedId = oArgs.relatedId;
 	var messageType = oArgs.messageType;
 	var apiUrl = oArgs.apiUrl;
+	var isPush = oArgs.isPush;
 	
 	var post_url = 'http://uat.gtomato.com/pizzahut/internalApi/createMessage.do'
 	// TODO - add PROD url
@@ -122,7 +123,7 @@ function initInboxMsg(req, res)
 		"contentTc": contentTc,
 		"type":messageType,
 		"relatedId": relatedId,
-		"isPush": false
+		"isPush": true
 	};
 		
 	console.log('form data:', form_data);
