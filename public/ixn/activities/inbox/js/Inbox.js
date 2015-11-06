@@ -185,7 +185,7 @@ define( function( require ) {
 		toJbPayload['arguments'].execute.inArguments.push({"titleTc": titleTc});
 		toJbPayload['arguments'].execute.inArguments.push({"contentTc": contentTc});
 		toJbPayload['arguments'].execute.inArguments.push({"messageType": messageType});
-		toJbPayload['isPush'].execute.inArguments.push({"isPush": messageType});
+		toJbPayload['arguments'].execute.inArguments.push({"isPush": isPush});
 		
 		toJbPayload['configurationArguments'].apiUrl = apiUrl;
 		toJbPayload['configurationArguments'].relatedId = relatedId;
