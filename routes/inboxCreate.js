@@ -123,7 +123,7 @@ function initInboxMsg(req, res)
 		"contentTc": contentTc,
 		"type":messageType,
 		"relatedId": relatedId,
-		"isPush": true
+		"isPush": isPush
 	};
 		
 	console.log('form data:', form_data);
