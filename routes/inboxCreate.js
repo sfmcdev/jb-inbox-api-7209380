@@ -88,7 +88,8 @@ function initInboxMsg(req, res)
 			"titleTc": "TC  Test Title",
 			"contentTc": "TC Test Content",
 			"messageType" : "MEMBER",
-			"relatiedId" : "150"
+			"relatedId" : "150",
+			"isPush" : true
 		};
 		contactKey = "927746965857";
 	}
