@@ -88,7 +88,7 @@ function initInboxMsg(req, res)
 			"titleTc": "TC  Test Title",
 			"contentTc": "TC Test Content",
 			"messageType" : "MEMBER",
-			"relatedId" : "150",
+			"relatedId" : "",
 			"isPush" : true
 		};
 		contactKey = "927746965857";
@@ -130,7 +130,7 @@ function initInboxMsg(req, res)
 		"contentTc": contentTc,
 		"type":messageType,
 		"relatedId": relatedId,
-		"isPush": sIsPush
+		"isPush": isPush
 	};
 		
 	console.log('form data:', form_data);
