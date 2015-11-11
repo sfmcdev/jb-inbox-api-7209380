@@ -22,6 +22,10 @@ define( function( require ) {
 		var contentTc;
 		var messageType;
 		var isPush;
+		var pushTitleEn;
+		var pushContentEn;
+		var pushTitleTc;
+		var pushContentTc;
 
         if (payload) {
             toJbPayload = payload;
@@ -43,18 +47,31 @@ define( function( require ) {
 			titleTc = oArgs.titleTc || toJbPayload['configurationArguments'].defaults.titleTc;
 			contentTc = oArgs.contentTc || toJbPayload['configurationArguments'].defaults.contentTc;
 			messageType = oArgs.messageType || toJbPayload['configurationArguments'].defaults.messageType;
+			
 			isPush = oArgs.isPush || toJbPayload['configurationArguments'].defaults.isPush;
+			pushTitleEn = oArgs.pushTitleEn || toJbPayload['configurationArguments'].defaults.pushTitleEn;
+			pushContentEn = oArgs.pushContentEn || toJbPayload['configurationArguments'].defaults.pushContentEn;
+			pushTitleTc = oArgs.pushTitleTc || toJbPayload['configurationArguments'].defaults.pushTitleTc;
+			pushContentTc = oArgs.pushContentTc || toJbPayload['configurationArguments'].defaults.pushContentTc;
         }
         
 		$.get( "/version", function( data ) {
 			$('#version').html('Version: ' + data.version);
 		});                
 
-		$('#titleEn').val(titleEn);
 		$('#relatedId').val(relatedId);
+		
+		// message
+		$('#titleEn').val(titleEn);		
 		$('#titleTc').val(titleTc);
-		$('#contentEn').val(contentEn);
 		$('#contentTc').val(contentTc);
+		$('#contentEn').val(contentEn);
+		
+		$('#pushTitleEn').val(pushTitleEn);		
+		$('#pushTitleTc').val(pushTitleTc);
+		$('#pushContentEn').val(pushContentEn);
+		$('#pushContentTc').val(pushContentTc);		
+		
 		$('#selectMessageType').find('option[value='+ messageType +']').attr('selected', 'selected');		
 		$('#selectURLType').find('option[value='+ apiUrl +']').attr('selected', 'selected');		
 		$('#isPush').attr('checked', isPush);
@@ -159,6 +176,40 @@ define( function( require ) {
 			return str.trim();
 		return "";
 	};
+	
+	// PUSH
+	function getPushTitleEn()
+	{
+		var str = $('#pushTitleEn').val();
+		if(str)
+			return str.trim();
+		return "";
+	};
+	
+	function getPushContentEn()
+	{
+		var str = $('#pushContentEn').val();
+		if(str)
+			return str.trim();
+		return "";
+	};
+	
+	function getPushTitleTc()
+	{
+		var str = $('#pushTitleTc').val();
+		if(str)
+			return str.trim();
+		return "";
+	};
+	
+	function getPushContentTc()
+	{
+		var str = $('#contentTc').val();
+		if(str)
+			return str.trim();
+		return "";
+	};
+	
     function getMessageType() {
         return $('#selectMessageType').find('option:selected').attr('value').trim();
     };
@@ -170,31 +221,56 @@ define( function( require ) {
 
     function save() {
 		var apiUrl = getApiUrl();
+		var messageType = getMessageType();
 		var relatedId = getRelatedId();
-        var titleEn = getTitleEn();
+        
+		var titleEn = getTitleEn();
 		var contentEn = getContentEn();
 		var titleTc = getTitleTc();
 		var contentTc = getContentTc();
-		var messageType = getMessageType();
+		
 		var isPush = getIsPush();
 		
+		var pushTitleEn = getPushTitleEn();
+		var pushContentEn = getPushContentEn();
+		var pushTitleTc = getPushTitleTc();
+		var pushContentTc = getPushContentTc();
+		
+		
+		// ARGUMENTS
         toJbPayload['arguments'].execute.inArguments.push({"apiUrl": apiUrl});
+		toJbPayload['arguments'].execute.inArguments.push({"messageType": messageType});
         toJbPayload['arguments'].execute.inArguments.push({"relatedId": relatedId});
+		
         toJbPayload['arguments'].execute.inArguments.push({"titleEn": titleEn});
 		toJbPayload['arguments'].execute.inArguments.push({"contentEn": contentEn});
 		toJbPayload['arguments'].execute.inArguments.push({"titleTc": titleTc});
-		toJbPayload['arguments'].execute.inArguments.push({"contentTc": contentTc});
-		toJbPayload['arguments'].execute.inArguments.push({"messageType": messageType});
+		toJbPayload['arguments'].execute.inArguments.push({"contentTc": contentTc});	
+		
 		toJbPayload['arguments'].execute.inArguments.push({"isPush": isPush});
 		
+		toJbPayload['arguments'].execute.inArguments.push({"pushTitleEn": pushTitleEn});
+		toJbPayload['arguments'].execute.inArguments.push({"pushContentEn": pushContentEn});
+		toJbPayload['arguments'].execute.inArguments.push({"pushTitleTc": pushTitleTc});
+		toJbPayload['arguments'].execute.inArguments.push({"pushContentTc": pushContentTc});
+		
+		
+		// CONFIGURATION
 		toJbPayload['configurationArguments'].apiUrl = apiUrl;
+		toJbPayload['configurationArguments'].messageType = messageType;
 		toJbPayload['configurationArguments'].relatedId = relatedId;
+		
 		toJbPayload['configurationArguments'].titleEn = titleEn;
 		toJbPayload['configurationArguments'].titleTc = titleTc;
 		toJbPayload['configurationArguments'].contentEn = contentEn;
 		toJbPayload['configurationArguments'].contentTc = contentTc;
-		toJbPayload['configurationArguments'].messageType = messageType;
+		
 		toJbPayload['configurationArguments'].isPush = isPush;
+		
+		toJbPayload['configurationArguments'].pushTitleEn = pushTitleEn;
+		toJbPayload['configurationArguments'].pushTitleTc = pushTitleTc;
+		toJbPayload['configurationArguments'].pushContentEn = pushContentEn;
+		toJbPayload['configurationArguments'].pushContentTc = pushContentTc;
 		
 		toJbPayload.metaData.isConfigured = true;  //this is required by JB to set the activity as Configured.
         connection.trigger('updateActivity', toJbPayload);

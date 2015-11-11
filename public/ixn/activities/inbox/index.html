@@ -13,53 +13,87 @@
 	<div id="step1" class="step">
 		<p><small id="version"></small></p>
 		
-		<form name="frm1">
-			
-			<h2>API URL</h2>
-			<select id="selectURLType">
-				<option value="type_uat">UAT</option>
-				<option value="type_prod">PROD</option>
-			</select>		
-			
-			<h2>Message Type</h2>		
-			<select id="selectMessageType">
-				<option value="type_coupon">COUPON</option>
-				<option value="type_member">MEMBER</option>
-				<option value="type_coupon">PROMO</option>
-				<option value="type_other">OTHER</option>						
-			</select>		
+		<form name="frm1" style="width:500px">
+			<div class="select">
+				<h2>INBOX Message</h2>
+				<h3>UAT/PROD?</h3>
+				<select id="selectURLType">
+					<option value="type_uat">UAT</option>
+					<option value="type_prod">PROD</option>
+				</select>		
+			</div>
+
+			<div class="select">
+				<h3>Message Type</h3>		
+				<select id="selectMessageType">
+					<option value="type_coupon">COUPON</option>
+					<option value="type_member">MEMBER</option>
+					<option value="type_coupon">PROMO</option>
+					<option value="type_other">OTHER</option>						
+				</select>		
+			</div>
+			<br/>
 			<table>
 				<tr>
-					<td>Related Id</td>
+					<td class="label">Related Id</td>
 					<td><input id="relatedId"/></td>
 				</tr>
-			</table>
-			<h2>English Contents</h2>
+			</table>			
+			<h3>Message Contents</h3>
+			
 			<table>
 				<tr>
-					<td>Title</td>
+					<td class="label">Title EN</td>
 					<td><input id="titleEn"/></td>
 				</tr>
 				<tr>
-					<td>Contents</td>
+					<td class="label">Content EN</td>
 					<td><input id="contentEn" class="contents"/></td>
 				</tr>
 			</table>
 			
-			<h2>Chinese Contents</h2>
 			<table>
 				<tr>
-					<td>Title</td>
+					<td class="label">Title 中文</td>
 					<td><input id="titleTc"/></td>
 				</tr>
 				<tr>
-					<td>Contents</td>
+					<td class="label">Content 中文</td>
 					<td><input id="contentTc" class="contents"/></td>
 				</tr>
 			</table>
-			<h2>Is Push?</h2>
-			<label><input type="checkbox" id="isPush"/>true</label>			
-			
+			<hr/>
+			<div class="push">
+				<h3>Push</h3>
+				<div class="isPush">
+					<label><input type="checkbox" id="isPush"/>isPush?</label>			
+				</div>
+				
+				<!-- Push parameters -->
+				
+				<table>
+					<tr>
+						<td class="label">Title EN</td>
+						<td><input id="pushTitleEn"/></td>
+					</tr>
+					<tr>
+						<td class="label">Content EN</td>
+						<td><input id="pushContentEn" class="contents"/></td>
+					</tr>
+				</table>
+				
+				
+				<table>
+					<tr>
+						<td class="label">Push Title 中文</td>
+						<td><input id="pushTitleTc"/></td>
+					</tr>
+					<tr>
+						<td class="label">Push Content 中文</td>
+						<td><input id="pushContentTc" class="contents"/></td>
+					</tr>
+				</table>
+			</div>
 		</form>
 	</div>		
 </body>

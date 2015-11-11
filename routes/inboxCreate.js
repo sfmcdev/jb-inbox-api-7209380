@@ -85,11 +85,15 @@ function initInboxMsg(req, res)
 		oArgs = {
 			"titleEn": "EN Test Title",
 			"contentEn": "EN Test Content",
-			"titleTc": "TC  Test Title",
-			"contentTc": "TC Test Content",
+			"titleTc": "Test 中文標題",
+			"contentTc": "Push 中文肉容"
 			"messageType" : "MEMBER",
 			"relatedId" : "",
-			"isPush" : true
+			"isPush" : true,
+			"pushTitleEn": "Push EN Title",
+			"pushContentEn": "Push EN Content",
+			"pushTitleTc": "Push 中文標題",
+			"pushContentTc": "Push 中文肉容"
 		};
 		contactKey = "927746965857";
 	}
@@ -103,12 +107,6 @@ function initInboxMsg(req, res)
 	var messageType = oArgs.messageType;
 	var apiUrl = oArgs.apiUrl;
 	var isPush = oArgs.isPush;
-	
-	var sIsPush = "false";
-	if(isPush)
-	{
-		sIsPush = "true"
-	}
 	
 	var post_url = 'http://uat.gtomato.com/pizzahut/internalApi/createMessage.do'
 	// TODO - add PROD url
@@ -124,13 +122,17 @@ function initInboxMsg(req, res)
 	console.log('INBOX message for ', contactKey);
 	var form_data = {  
 		"userId":contactKey,
+		"type":messageType,
+		"relatedId": relatedId,
 		"titleEn": titleEn,
 		"contentEn": contentEn,
 		"titleTc": titleTc,
-		"contentTc": contentTc,
-		"type":messageType,
-		"relatedId": relatedId,
-		"isPush": isPush
+		"contentTc": contentTc,		
+		"isPush": isPush,
+		"pushTitleEn": pushTitleEn,
+		"pushContentEn": pushContentEn,
+		"pushTitleTc": pushTitleTc,
+		"pushContentTc": pushContentTc
 	};
 		
 	console.log('form data:', form_data);
