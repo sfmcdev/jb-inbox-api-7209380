@@ -86,7 +86,7 @@ function initInboxMsg(req, res)
 			"titleEn": "EN Test Title",
 			"contentEn": "EN Test Content",
 			"titleTc": "Test 中文標題",
-			"contentTc": "Push 中文肉容"
+			"contentTc": "Push 中文肉容",
 			"messageType" : "MEMBER",
 			"relatedId" : "",
 			"isPush" : true,
