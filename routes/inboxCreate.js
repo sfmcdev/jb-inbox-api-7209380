@@ -99,14 +99,20 @@ function initInboxMsg(req, res)
 	}
 	
 	// these values come from the custom activity form inputs
+	var relatedId = oArgs.relatedId;
+	var messageType = oArgs.messageType;
+	var apiUrl = oArgs.apiUrl;
+	
 	var titleEn = oArgs.titleEn;
 	var contentEn = oArgs.contentEn;
 	var titleTc = oArgs.titleTc;
 	var contentTc = oArgs.contentTc;
-	var relatedId = oArgs.relatedId;
-	var messageType = oArgs.messageType;
-	var apiUrl = oArgs.apiUrl;
-	var isPush = oArgs.isPush;
+	// push args
+	var isPush = oArgs.isPush;	
+	var pushTitleEn = oArgs.pushTitleEn;
+	var pushContentEn = oArgs.pushContentEn;
+	var pushTitleTc = oArgs.pushTitleTc;
+	var pushContentTc = oArgs.pushContentTc;
 	
 	var post_url = 'http://uat.gtomato.com/pizzahut/internalApi/createMessage.do'
 	// TODO - add PROD url
