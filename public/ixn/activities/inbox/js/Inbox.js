@@ -272,7 +272,18 @@ define( function( require ) {
 		toJbPayload['configurationArguments'].pushContentEn = pushContentEn;
 		toJbPayload['configurationArguments'].pushContentTc = pushContentTc;
 		
-		toJbPayload.metaData.isConfigured = true;  //this is required by JB to set the activity as Configured.
+		var valid = true;
+		if(isPush && (
+				!pushTitleEn || pushTitleEn == undefined
+				|| !pushTitleTc || pushTitleTc == undefined
+				|| !pushContentEn || pushContentEn == undefined
+				|| !pushContentTc || pushContentTc == undefined
+			)
+		)
+		{
+			valid = false;
+		}
+		toJbPayload.metaData.isConfigured = valid;  //this is required by JB to set the activity as Configured.
         connection.trigger('updateActivity', toJbPayload);
     }; 
     	 

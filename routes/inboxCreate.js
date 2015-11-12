@@ -40,8 +40,61 @@ exports.publish = function( req, res ) {
 exports.validate = function( req, res ) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
+	
+		//merge the array of objects for easy access in code.
+	var aArgs = req.body.inArguments;
+	console.log( aArgs );
+	var oArgs = {};
+	var iLen = 0;
+	if(aArgs != undefined)
+	{
+		iLen = aArgs.length;
+	}
+	for (var i=0; i<iLen; i++) {  
+		for (var key in aArgs[i]) { 
+			oArgs[key] = aArgs[i][key]; 
+		}
+	}
+	
+
+	// these values come from the custom activity form inputs
+	var relatedId = oArgs.relatedId;
+	var messageType = oArgs.messageType;
+	var apiUrl = oArgs.apiUrl;
+	
+	var titleEn = oArgs.titleEn;
+	var contentEn = oArgs.contentEn;
+	var titleTc = oArgs.titleTc;
+	var contentTc = oArgs.contentTc;
+	// push args
+	var isPush = oArgs.isPush;	
+	var pushTitleEn = oArgs.pushTitleEn;
+	var pushContentEn = oArgs.pushContentEn;
+	var pushTitleTc = oArgs.pushTitleTc;
+	var pushContentTc = oArgs.pushContentTc;
+	
+	var valid = true;
+	if(isPush &&
+		(
+			!pushTitleEn || pushTitleEn == undefined
+			|| !pushTitleTc || pushTitleTc == undefined
+			|| !pushContentEn || pushContentEn == undefined
+			|| !pushContentTc || pushContentTc == undefined
+		)
+	)
+	{
+		valid = false;
+	}
+		
     activityUtils.logData( req );
-    res.send( 200, 'Validate' );
+	if(valid)
+	{
+		res.send( 200, 'Validate' );
+	}
+	else
+	{
+		res.send( 500, 'Validate' );
+	}
 };
 
 /*
