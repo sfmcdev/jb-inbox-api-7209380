@@ -195,6 +195,7 @@ function initInboxMsg(req, res)
 	};
 		
 	console.log('form data:', form_data);
+	console.log('url:', post_url);
 
 	var request = require('request');
 	request.post(
