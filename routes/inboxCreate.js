@@ -139,14 +139,14 @@ function initInboxMsg(req, res)
 			"titleEn": "EN Test Title",
 			"contentEn": "EN Test Content",
 			"titleTc": "Test 中文標題",
-			"contentTc": "Push 中文肉容",
-			"messageType" : "MEMBER",
+			"contentTc": "Push 中文內容",
+			"messageType" : "COUPON",
 			"relatedId" : "",
 			"isPush" : true,
 			"pushTitleEn": "Push EN Title",
 			"pushContentEn": "Push EN Content",
 			"pushTitleTc": "Push 中文標題",
-			"pushContentTc": "Push 中文肉容"
+			"pushContentTc": "Push 中文內容"
 		};
 		contactKey = "927746965857";
 	}
