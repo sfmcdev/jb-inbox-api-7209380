@@ -1,6 +1,6 @@
 {
   "name": "pzh-inbox-7209380",
-  "version": "0.8.6",
+  "version": "1.0",
   "private": true,
   "scripts": {
     "start": "node app.js"

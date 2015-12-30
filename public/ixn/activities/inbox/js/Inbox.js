@@ -204,7 +204,7 @@ define( function( require ) {
 	
 	function getPushContentTc()
 	{
-		var str = $('#contentTc').val();
+		var str = $('#pushContentTc').val();
 		if(str)
 			return str.trim();
 		return "";
